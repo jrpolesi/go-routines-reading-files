@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"github.com/jrpolesi/go-routines-reading-files/solutions"
 )
@@ -28,6 +29,8 @@ func main() {
 		WithCSVReaderAndAsynchronousWithChannel: solutions.WithCSVReaderAndAsynchronousWithChannel{},
 	}
 
+	startTime := time.Now()
+
 	switch solution {
 	case "1":
 		solutions.WithCSVReaderAndSynchronous.Resolve(usersFile, productsFile, resultFile)
@@ -39,6 +42,9 @@ func main() {
 		log.Fatal("Invalid solution")
 		os.Exit(1)
 	}
+
+	executionTime := time.Since(startTime)
+	fmt.Printf("Execution time: %.2f seconds\n", executionTime.Seconds())
 
 	fmt.Println("Data saved in", resultFile)
 }

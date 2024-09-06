@@ -15,18 +15,20 @@ type Solution interface {
 }
 
 type Solutions struct {
-	WithCSVReaderAndSynchronous             Solution
-	WithCSVReaderAndAsynchronous            Solution
-	WithCSVReaderAndAsynchronousWithChannel Solution
+	WithCSVReaderAndSynchronous              Solution
+	WithCSVReaderAndAsynchronous             Solution
+	WithCSVReaderAndAsynchronousWithChannel  Solution
+	WithCSVReaderAndAsynchronousWithChannel2 Solution
 }
 
 func main() {
 	usersFile, productsFile, resultFile, solution := readFlags()
 
 	solutions := Solutions{
-		WithCSVReaderAndSynchronous:             solutions.WithCSVReaderAndSynchronous{},
-		WithCSVReaderAndAsynchronous:            solutions.WithCSVReaderAndAsynchronous{},
-		WithCSVReaderAndAsynchronousWithChannel: solutions.WithCSVReaderAndAsynchronousWithChannel{},
+		WithCSVReaderAndSynchronous:              solutions.WithCSVReaderAndSynchronous{},
+		WithCSVReaderAndAsynchronous:             solutions.WithCSVReaderAndAsynchronous{},
+		WithCSVReaderAndAsynchronousWithChannel:  solutions.WithCSVReaderAndAsynchronousWithChannel{},
+		WithCSVReaderAndAsynchronousWithChannel2: solutions.WithCSVReaderAndAsynchronousWithChannel2{},
 	}
 
 	startTime := time.Now()
@@ -38,6 +40,8 @@ func main() {
 		solutions.WithCSVReaderAndAsynchronous.Resolve(usersFile, productsFile, resultFile)
 	case "3":
 		solutions.WithCSVReaderAndAsynchronousWithChannel.Resolve(usersFile, productsFile, resultFile)
+	case "4":
+		solutions.WithCSVReaderAndAsynchronousWithChannel2.Resolve(usersFile, productsFile, resultFile)
 	default:
 		log.Fatal("Invalid solution")
 		os.Exit(1)

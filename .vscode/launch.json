@@ -13,7 +13,8 @@
       "args": [
         "--users=users.csv",
         "--products=products.csv",
-        "--result=result.json"
+        "--result=result.json",
+        "--solution=3"
       ]
     }
   ]

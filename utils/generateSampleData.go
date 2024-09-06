@@ -135,13 +135,13 @@ func GenerateCSVFiles() {
 		panic(err)
 	}
 
-	for i := 1; i < 5_000_000; i++ {
+	for i := 1; i < 500_000; i++ {
 		row := fmt.Sprintf("%d,%s\n", i, getRandomName())
 		file.Write([]byte(row))
 	}
 
-	for i := 1; i < 10_000_000; i++ {
-		row := fmt.Sprintf("%d,%s,%d,%d\n", i, getRandomProductName(), rand.Intn(1_999), rand.Intn(4_999_999)+1)
+	for i := 1; i < 1_000_000; i++ {
+		row := fmt.Sprintf("%d,%s,%d,%d\n", i, getRandomProductName(), rand.Intn(1_999), rand.Intn(499_999)+1)
 		file2.Write([]byte(row))
 	}
 
